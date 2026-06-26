@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Contato {
+    public String nome;
+    public String telefone;
+}
+
+public class SistemaContatos {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Contato> contatos = new ArrayList<>();
+
+        int opcao;
+
+        do {
+            System.out.println("\nMENU CONTATOS");
+            System.out.println("1 - Adicionar contato");
+            System.out.println("2 - Listar contatos");
+            System.out.println("3 - Sair");
+            System.out.print("Escolha: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            if (opcao == 1) {
+
+                Contato c = new Contato();
+
+                System.out.print("Nome: ");
+                c.nome = scanner.nextLine();
+
+                System.out.print("Telefone: ");
+                c.telefone = scanner.nextLine();
+
+                contatos.add(c);
+
+                System.out.println("Contato adicionado!");
+            }
+
+            else if (opcao == 2) {
+
+                System.out.println("\n LISTA DE CONTATOS ");
+
+                if (contatos.isEmpty()) {
+                    System.out.println("Nenhum contato cadastrado.");
+                } else {
+                    for (Contato cont : contatos) {
+                        System.out.println("Nome: " + cont.nome + " | Telefone: " + cont.telefone);
+                    }
+                }
+            }
+
+            else if (opcao == 3) {
+                System.out.println("Saindo...");
+            }
+
+            else {
+                System.out.println("Opção inválida!");
+            }
+
+        } while (opcao != 3);
+
+        scanner.close();
+    }
+}
